@@ -10,7 +10,6 @@ import openai
 
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
-#openai.api_key="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"
 os.environ["OPENAI_API_KEY"] = openai.api_key
 llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 schema = """
