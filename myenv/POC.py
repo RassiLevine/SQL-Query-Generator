@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 import os
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
-from langchain_community.agent_toolkits import create_sql_agent
 from langchain.prompts import SystemMessagePromptTemplate
 from langchain.agents import AgentExecutor
 
@@ -178,7 +177,7 @@ def generate_sql_query(user_input):
     return response.strip() 
 
     
-user_query = st.text_area("Enter your related SQL-related query:", "List the most recently created recipe")
+user_query = st.text_area("Enter your related SQL-related query:")
 if st.button('Generate SQL Query'):
     try:
         # Generate the SQL query based on user input
@@ -188,26 +187,3 @@ if st.button('Generate SQL Query'):
         st.code(generated_sql, language="sql")
     except Exception as e:
         st.error(f"An error occurred: {e}")
-
-
-        
-
-
-
-# Simple request to check if API key is working
-response = openai.completions.create(
-    model="gpt-3.5-turbo",
-    prompt="Hello, how are you?",
-    max_tokens=5
-)
-
-print("API KEY STATUS:", response)
-
-
-#check what models are available for api key
-# import openai
-
-# # Check available models
-# models = openai.Model.list()
-# for model in models['data']:
-#     print(model['id'])
